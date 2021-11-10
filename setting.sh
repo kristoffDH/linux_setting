@@ -12,14 +12,14 @@
 #!/bin/bash
 # update
 echo "--------------------------------------------"
-echo "update add"
+echo "Update add"
 echo "--------------------------------------------"
 sudo apt update
 sudo apt upgrade
 
 # install apt package
 echo "--------------------------------------------"
-echo "install apt package"
+echo "Install apt package"
 echo "--------------------------------------------"
 sudo apt install -y build-essential software-properties-common libssl-dev make curl tree python-openssl unzip
 sudo apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
@@ -27,7 +27,7 @@ sudo apt install -y terminator
 
 # install neovim (nvim)
 echo "--------------------------------------------"
-echo "install neovim (nvim)"
+echo "Install neovim (nvim)"
 echo "--------------------------------------------"
 sudo apt update
 pip3 install --user neovim
@@ -35,13 +35,13 @@ sudo apt-get install -y neovim
 
 # python3 link to python
 echo "--------------------------------------------"
-echo "python3 link to python"
+echo "Link python3 to python"
 echo "--------------------------------------------"
 sudo ln -s /usr/bin/python3 /usr/bin/python
 
 # settin nvim config
 echo "--------------------------------------------"
-echo "settin nvim config"
+echo "Setting nvim config"
 echo "--------------------------------------------"
 cat << EOF > .vimrc
 colorscheme CodeSchool3
@@ -162,43 +162,36 @@ EOF
 
 # install bat (batcat)
 echo "--------------------------------------------"
-echo "install bat (batcat)"
+echo "Install bat (batcat)"
 echo "--------------------------------------------"
 sudo apt install -y bat 
 
 # autojump install
 echo "--------------------------------------------"
-echo "autojump install"
+echo "Install autojump"
 echo "--------------------------------------------"
 sudo apt install -y autojump
-    
+
+echo "--------------------------------------------"
+echo "Install lsd"
+echo "--------------------------------------------"
+sudo dpkg -i ./lsd_0.20.1_amd64.deb
+
 # install fd-find(fd)
 echo "--------------------------------------------"
-echo "install fd-find(fd)"
+echo "Install fd-find(fd)"
 echo "--------------------------------------------"
 sudo apt-get install -y fd-find
 
-# install snapd
-echo "--------------------------------------------"
-echo "install snapd"
-echo "--------------------------------------------"
-sudo apt install -y snapd
-
-# install lsd
-echo "--------------------------------------------"
-echo "install lsd"
-echo "--------------------------------------------"
-sudo snap install -y lsd
-
 # install zsh
 echo "--------------------------------------------"
-echo "install zsh"
+echo "Install zsh"
 echo "--------------------------------------------"
 sudo apt-get install -y zsh
 
 # install oh-my-zsh
 echo "--------------------------------------------"
-echo "install oh-my-zsh"
+echo "Install oh-my-zsh"
 echo "--------------------------------------------"
 cd ~
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
@@ -206,20 +199,20 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 
 # zsh install plugin
 echo "--------------------------------------------"
-echo "zsh install plugin"
+echo "Install zsh plugin"
 echo "--------------------------------------------"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
             
 # zsh headline theme
 echo "--------------------------------------------"
-echo "zsh headline theme"
+echo "Clone zsh headline theme"
 echo "--------------------------------------------"
 git clone https://github.com/moarram/headline.git ~/.oh-my-zsh/custom/themes/headline
 
 # setting .zshrc
 echo "--------------------------------------------"
-echo "# setting .zshrc"
+echo "#Setting .zshrc"
 echo "--------------------------------------------"
 sed -i "s/robbyrussell/headline\/headline/" .zshrc
 sed -i "s/plugins=(git)/plugins=(\nzsh-autosuggestions\nzsh-syntax-highlighting\nautojump\ngit)/" .zshrc
@@ -233,4 +226,12 @@ alias fd='fdfind'
 alias cat='batcat'
 EOF
 
+echo "--------------------------------------------"
+echo "#Modify login shell"
+echo "--------------------------------------------"
 sudo sed -i "s/${USER}:\/bin\/bash/${USER}:\/bin\/zsh/" /etc/passwd
+
+echo "--------------------------------------------"
+echo "#Install Hack Font"
+echo "--------------------------------------------"
+
