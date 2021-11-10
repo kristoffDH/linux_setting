@@ -203,28 +203,26 @@ echo "--------------------------------------------"
 cd ~
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
-source ~/.zshrc
-
 
 # zsh install plugin
 echo "--------------------------------------------"
 echo "zsh install plugin"
 echo "--------------------------------------------"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
             
 # zsh headline theme
 echo "--------------------------------------------"
 echo "zsh headline theme"
 echo "--------------------------------------------"
-git clone https://github.com/moarram/headline.git $ZSH_CUSTOM/themes/headline
+git clone https://github.com/moarram/headline.git ~/.oh-my-zsh/custom/themes/headline
 
 # setting .zshrc
 echo "--------------------------------------------"
 echo "# setting .zshrc"
 echo "--------------------------------------------"
 sed -i "s/robbyrussell/headline\/headline/" .zshrc
-sed -i "s/plugins=(/plugins=(\nzsh-autosuggestions\nzsh-syntax-highlighting\nautojump\n/" .zshrc
+sed -i "s/plugins=(git)/plugins=(\nzsh-autosuggestions\nzsh-syntax-highlighting\nautojump\ngit)/" .zshrc
 
 cat << EOF >> .zshrc
 alias ls="lsd"
@@ -235,4 +233,3 @@ alias fd='fdfind'
 alias cat='batcat'
 EOF
 
-sidp sed -i 
