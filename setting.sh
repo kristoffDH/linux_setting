@@ -164,31 +164,31 @@ EOF
 echo "--------------------------------------------"
 echo "install bat (batcat)"
 echo "--------------------------------------------"
-sudo apt install bat 
+sudo apt install -y bat 
 
 # autojump install
 echo "--------------------------------------------"
 echo "autojump install"
 echo "--------------------------------------------"
-sudo apt install autojump
+sudo apt install -y autojump
     
 # install fd-find(fd)
 echo "--------------------------------------------"
 echo "install fd-find(fd)"
 echo "--------------------------------------------"
-sudo apt-get install fd-find
+sudo apt-get install -y fd-find
 
 # install snapd
 echo "--------------------------------------------"
 echo "install snapd"
 echo "--------------------------------------------"
-sudo apt install snapd
+sudo apt install -y snapd
 
 # install lsd
 echo "--------------------------------------------"
 echo "install lsd"
 echo "--------------------------------------------"
-sudo snap install lsd
+sudo snap install -y lsd
 
 # install zsh
 echo "--------------------------------------------"
@@ -202,6 +202,9 @@ echo "install oh-my-zsh"
 echo "--------------------------------------------"
 cd ~
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+source ~/.zshrc
+
 
 # zsh install plugin
 echo "--------------------------------------------"
@@ -232,5 +235,4 @@ alias fd='fdfind'
 alias cat='batcat'
 EOF
 
-
-
+sidp sed -i 
