@@ -2,7 +2,7 @@
 # defore running shell
 
 # add sudoers 
-# echo "$(whoami) ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
+# echo "$(USER) ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
 
 # install git
 # sudo install apt git
@@ -233,3 +233,4 @@ alias fd='fdfind'
 alias cat='batcat'
 EOF
 
+sudo sed -i "s/${USER}:\/bin\/bash/${USER}:\/bin\/zsh/" /etc/passwd
