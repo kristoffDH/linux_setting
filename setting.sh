@@ -11,8 +11,8 @@
 
 #!/bin/bash
 # update add
-sudo apt update
-sudo apt upgrade
+sudo apt update -y
+sudo apt upgrade -y
 
 # install apt package
 sudo apt install -y build-essential software-properties-common libssl-dev make curl tree python-openssl unzip
