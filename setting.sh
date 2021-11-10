@@ -10,23 +10,39 @@
 ###############################################################
 
 #!/bin/bash
-# update add
-sudo apt update -y
-sudo apt upgrade -y
+# update
+echo "--------------------------------------------"
+echo "update add"
+echo "--------------------------------------------"
+sudo apt update
+sudo apt upgrade
 
 # install apt package
+echo "--------------------------------------------"
+echo "install apt package"
+echo "--------------------------------------------"
 sudo apt install -y build-essential software-properties-common libssl-dev make curl tree python-openssl unzip
 sudo apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+sudo apt install -y terminator
 
 # install neovim (nvim)
+echo "--------------------------------------------"
+echo "install neovim (nvim)"
+echo "--------------------------------------------"
 sudo apt update
 pip3 install --user neovim
 sudo apt-get install -y neovim
 
 # python3 link to python
+echo "--------------------------------------------"
+echo "python3 link to python"
+echo "--------------------------------------------"
 sudo ln -s /usr/bin/python3 /usr/bin/python
 
 # settin nvim config
+echo "--------------------------------------------"
+echo "settin nvim config"
+echo "--------------------------------------------"
 cat << EOF > .vimrc
 colorscheme CodeSchool3
 set termguicolors
@@ -145,35 +161,65 @@ EOF
 
 
 # install bat (batcat)
+echo "--------------------------------------------"
+echo "install bat (batcat)"
+echo "--------------------------------------------"
 sudo apt install bat 
 
 # autojump install
+echo "--------------------------------------------"
+echo "autojump install"
+echo "--------------------------------------------"
 sudo apt install autojump
     
 # install fd-find(fd)
+echo "--------------------------------------------"
+echo "install fd-find(fd)"
+echo "--------------------------------------------"
 sudo apt-get install fd-find
 
 # install snapd
+echo "--------------------------------------------"
+echo "install snapd"
+echo "--------------------------------------------"
 sudo apt install snapd
 
 # install lsd
+echo "--------------------------------------------"
+echo "install lsd"
+echo "--------------------------------------------"
 sudo snap install lsd
 
 # install zsh
+echo "--------------------------------------------"
+echo "install zsh"
+echo "--------------------------------------------"
 sudo apt-get install -y zsh
 
 # install oh-my-zsh
+echo "--------------------------------------------"
+echo "install oh-my-zsh"
+echo "--------------------------------------------"
 cd ~
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 # zsh install plugin
+echo "--------------------------------------------"
+echo "zsh install plugin"
+echo "--------------------------------------------"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
             
 # zsh headline theme
+echo "--------------------------------------------"
+echo "zsh headline theme"
+echo "--------------------------------------------"
 git clone https://github.com/moarram/headline.git $ZSH_CUSTOM/themes/headline
 
-# setting .zshrc 
+# setting .zshrc
+echo "--------------------------------------------"
+echo "# setting .zshrc"
+echo "--------------------------------------------"
 sed -i "s/robbyrussell/headline\/headline/" .zshrc
 sed -i "s/plugins=(/plugins=(\nzsh-autosuggestions\nzsh-syntax-highlighting\nautojump\n/" .zshrc
 
