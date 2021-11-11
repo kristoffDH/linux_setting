@@ -204,8 +204,9 @@ echo "--------------------------------------------"
 echo "Install zsh plugin"
 echo "--------------------------------------------"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-            
+#git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git lone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
+
 # zsh headline theme
 echo "--------------------------------------------"
 echo "Clone zsh headline theme"
@@ -217,7 +218,7 @@ echo "--------------------------------------------"
 echo "#Setting .zshrc"
 echo "--------------------------------------------"
 sed -i "s/robbyrussell/headline\/headline/" ~/.zshrc
-sed -i "s/plugins=(git)/plugins=(\nzsh-autosuggestions\nzsh-syntax-highlighting\nautojump\ngit)/" ~/.zshrc
+sed -i "s/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\n#zsh-syntax-highlighting\nfast-syntax-highlighting\ndocker\ndocker-compose\nautojump\nalias-tips\ncommand-not-found\ngitfast\npip\nsudo\nurltools\n)/" ~/.zshrc
 
 cat << EOF >> ~/.zshrc
 alias ls="lsd"
