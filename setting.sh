@@ -175,7 +175,7 @@ git clone https://github.com/moarram/headline.git ~/.oh-my-zsh/custom/themes/hea
 # install fzf plugin
 git clone https://github.com/junegunn/fzf.git ~/.fzf
 cd ~/.fzf
-./install -all
+./install --all
 
 # setting .zshrc
 sed -i "s/robbyrussell/headline\/headline/" ~/.zshrc
@@ -233,7 +233,4 @@ cat << EOF > $TERMINATOR_CFG_PATH/config
       parent = window0
 [plugins]
 EOF
-
-
-
 
