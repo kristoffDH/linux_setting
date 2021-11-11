@@ -14,7 +14,9 @@
 echo "--------------------------------------------"
 echo "Update add"
 echo "--------------------------------------------"
-sudo apt-get update && sudo apt-get install --only-upgrade unattended-upgrades
+sudo apt remove -y unattended-upgrades
+sudo apt update -y
+sudo apt upgrade -y
 
 # install apt package
 echo "--------------------------------------------"
