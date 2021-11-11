@@ -14,8 +14,8 @@
 echo "--------------------------------------------"
 echo "Update add"
 echo "--------------------------------------------"
-sudo apt update
-sudo apt upgrade
+sudo apt update -y
+sudo apt upgrade -y
 
 # install apt package
 echo "--------------------------------------------"
