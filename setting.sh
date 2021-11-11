@@ -172,6 +172,11 @@ git lone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh
 # zsh headline theme
 git clone https://github.com/moarram/headline.git ~/.oh-my-zsh/custom/themes/headline
 
+# install fzf plugin
+git clone https://github.com/junegunn/fzf.git ~/.fzf
+cd ~/.fzf
+./install -all
+
 # setting .zshrc
 sed -i "s/robbyrussell/headline\/headline/" ~/.zshrc
 sed -i "s/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\n#zsh-syntax-highlighting\nfast-syntax-highlighting\ndocker\ndocker-compose\nalias-tips\ncommand-not-found\ngitfast\npip\nsudo\nurltools\nripgrep\nfzf\nfasd\n)/" ~/.zshrc
@@ -231,9 +236,4 @@ EOF
 
 
 
-# install fzf plugin
-git clone https://github.com/junegunn/fzf.git ~/.fzf
-cd ~/.fzf
-./install -all
 
-cd $CUR_WORK_PATH
