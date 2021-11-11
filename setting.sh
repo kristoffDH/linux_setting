@@ -10,6 +10,7 @@
 ###############################################################
 
 #!/bin/bash
+CUR_WORK_PATH=$(pwd)
 # update
 echo "--------------------------------------------"
 echo "Update add"
@@ -44,13 +45,13 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 echo "--------------------------------------------"
 echo "Setting nvim config"
 echo "--------------------------------------------"
-cat << EOF > .vimrc
+cat << EOF > ~/.vimrc
 colorscheme CodeSchool3
 set termguicolors
 EOF
 
-mkdir -p .vim/colors
-cat << EOF > ./vim/colors/CodeSchool3.vim
+mkdir -p ~/.vim/colors
+cat << EOF > ~/.vim/colors/CodeSchool3.vim
 " Vim color file
 " Converted from my Textmate Code School theme using Coloration
 " http://astonj.com
@@ -176,7 +177,7 @@ sudo apt install -y autojump
 echo "--------------------------------------------"
 echo "Install lsd"
 echo "--------------------------------------------"
-sudo dpkg -i ./lsd_0.20.1_amd64.deb
+sudo dpkg -i $CUR_WORK_PATH/lsd_0.20.1_amd64.deb
 
 # install fd-find(fd)
 echo "--------------------------------------------"
@@ -215,10 +216,10 @@ git clone https://github.com/moarram/headline.git ~/.oh-my-zsh/custom/themes/hea
 echo "--------------------------------------------"
 echo "#Setting .zshrc"
 echo "--------------------------------------------"
-sed -i "s/robbyrussell/headline\/headline/" .zshrc
-sed -i "s/plugins=(git)/plugins=(\nzsh-autosuggestions\nzsh-syntax-highlighting\nautojump\ngit)/" .zshrc
+sed -i "s/robbyrussell/headline\/headline/" ~/.zshrc
+sed -i "s/plugins=(git)/plugins=(\nzsh-autosuggestions\nzsh-syntax-highlighting\nautojump\ngit)/" ~/.zshrc
 
-cat << EOF >> .zshrc
+cat << EOF >> ~/.zshrc
 alias ls="lsd"
 alias ll="lsd -al"
 alias lt="lsd --tree"
@@ -233,11 +234,11 @@ echo "--------------------------------------------"
 sudo sed -i "s/${USER}:\/bin\/bash/${USER}:\/bin\/zsh/" /etc/passwd
 
 echo "--------------------------------------------"
-echo "#Cp Hack Font"
+echo "#Copy Hack Font"
 echo "--------------------------------------------"
 FONT_PATH=~/.local/share/fonts
 mkdir -p $FONT_PATH
-cp ./Hack_Font.ttf $FONT_PATH/
+cp $CUR_WORK_PATH/Hack_Font.ttf $FONT_PATH/
 
 echo "--------------------------------------------"
 echo "#Terminator config"
