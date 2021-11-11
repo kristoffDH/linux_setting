@@ -234,12 +234,16 @@ sudo sed -i "s/${USER}:\/bin\/bash/${USER}:\/bin\/zsh/" /etc/passwd
 echo "--------------------------------------------"
 echo "#Cp Hack Font"
 echo "--------------------------------------------"
-cp ./Hack_Font.ttf ~/.local/share/fonts
+FONT_PATH=~/.local/share/fonts
+mkdir -p $FONT_PATH
+cp ./Hack_Font.ttf $FONT_PATH/
 
 echo "--------------------------------------------"
 echo "#Terminator config"
 echo "--------------------------------------------"
-cat << EOF > ~/.config/terminator/config
+TERMINATOR_CFG_PATH=~/.config/terminator
+mkdir -p $TERMINATOR_CFG_PATH
+cat << EOF > $TERMINATOR_CFG_PATH/config
 [global_config]
 [keybindings]
 [profiles]
