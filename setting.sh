@@ -232,6 +232,29 @@ echo "--------------------------------------------"
 sudo sed -i "s/${USER}:\/bin\/bash/${USER}:\/bin\/zsh/" /etc/passwd
 
 echo "--------------------------------------------"
-echo "#Install Hack Font"
+echo "#Cp Hack Font"
 echo "--------------------------------------------"
+cp ./Hack_Font.ttf ~/.local/share/fonts
+
+echo "--------------------------------------------"
+echo "#Terminator config"
+echo "--------------------------------------------"
+cat << EOF > ~/.config/terminator/config
+[global_config]
+[keybindings]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = Hack Nerd Font 11
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
+EOF
 
