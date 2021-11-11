@@ -25,26 +25,19 @@ echo "Install apt package"
 echo "--------------------------------------------"
 sudo apt install -y build-essential software-properties-common libssl-dev make curl tree python-openssl unzip
 sudo apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-sudo apt install -y terminator
+sudo apt install -y terminator fzf fd-find fasd
+sudo apt install -o Dpkg::Options::="--force-overwrite" bat ripgrep
+
+sudo dpkg -i $CUR_WORK_PATH/lsd_0.20.1_amd64.deb
 
 # install neovim (nvim)
-echo "--------------------------------------------"
-echo "Install neovim (nvim)"
-echo "--------------------------------------------"
-sudo apt update
 pip3 install --user neovim
 sudo apt-get install -y neovim
 
 # python3 link to python
-echo "--------------------------------------------"
-echo "Link python3 to python"
-echo "--------------------------------------------"
 sudo ln -s /usr/bin/python3 /usr/bin/python
 
 # settin nvim config
-echo "--------------------------------------------"
-echo "Setting nvim config"
-echo "--------------------------------------------"
 cat << EOF > ~/.vimrc
 colorscheme CodeSchool3
 set termguicolors
@@ -162,63 +155,26 @@ hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 EOF
 
 
-# install bat (batcat)
-echo "--------------------------------------------"
-echo "Install bat (batcat)"
-echo "--------------------------------------------"
-sudo apt install -y bat 
-
-# autojump install
-echo "--------------------------------------------"
-echo "Install autojump"
-echo "--------------------------------------------"
-sudo apt install -y autojump
-
-echo "--------------------------------------------"
-echo "Install lsd"
-echo "--------------------------------------------"
-sudo dpkg -i $CUR_WORK_PATH/lsd_0.20.1_amd64.deb
-
-# install fd-find(fd)
-echo "--------------------------------------------"
-echo "Install fd-find(fd)"
-echo "--------------------------------------------"
-sudo apt-get install -y fd-find
 
 # install zsh
-echo "--------------------------------------------"
-echo "Install zsh"
-echo "--------------------------------------------"
 sudo apt-get install -y zsh
 
 # install oh-my-zsh
-echo "--------------------------------------------"
-echo "Install oh-my-zsh"
-echo "--------------------------------------------"
 cd ~
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 
 # zsh install plugin
-echo "--------------------------------------------"
-echo "Install zsh plugin"
-echo "--------------------------------------------"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 #git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git lone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
 
 # zsh headline theme
-echo "--------------------------------------------"
-echo "Clone zsh headline theme"
-echo "--------------------------------------------"
 git clone https://github.com/moarram/headline.git ~/.oh-my-zsh/custom/themes/headline
 
 # setting .zshrc
-echo "--------------------------------------------"
-echo "#Setting .zshrc"
-echo "--------------------------------------------"
 sed -i "s/robbyrussell/headline\/headline/" ~/.zshrc
-sed -i "s/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\n#zsh-syntax-highlighting\nfast-syntax-highlighting\ndocker\ndocker-compose\nautojump\nalias-tips\ncommand-not-found\ngitfast\npip\nsudo\nurltools\n)/" ~/.zshrc
+sed -i "s/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\n#zsh-syntax-highlighting\nfast-syntax-highlighting\ndocker\ndocker-compose\nalias-tips\ncommand-not-found\ngitfast\npip\nsudo\nurltools\nripgrep\nfzf\nfasd\n)/" ~/.zshrc
 
 cat << EOF >> ~/.zshrc
 alias ls="lsd"
@@ -227,23 +183,31 @@ alias lt="lsd --tree"
 alias vi='nvim'
 alias fd='fdfind'
 alias cat='batcat'
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(fasd --init auto)"
 EOF
 
-echo "--------------------------------------------"
-echo "#Modify login shell"
-echo "--------------------------------------------"
+# Modify login shell
 sudo sed -i "s/${USER}:\/bin\/bash/${USER}:\/bin\/zsh/" /etc/passwd
 
-echo "--------------------------------------------"
-echo "#Copy Hack Font"
-echo "--------------------------------------------"
+# Copy Hack Font
 FONT_PATH=~/.local/share/fonts
 mkdir -p $FONT_PATH
 cp $CUR_WORK_PATH/Hack_Font.ttf $FONT_PATH/
 
-echo "--------------------------------------------"
-echo "#Terminator config"
-echo "--------------------------------------------"
+# Terminator config
 TERMINATOR_CFG_PATH=~/.config/terminator
 mkdir -p $TERMINATOR_CFG_PATH
 cat << EOF > $TERMINATOR_CFG_PATH/config
@@ -265,3 +229,11 @@ cat << EOF > $TERMINATOR_CFG_PATH/config
 [plugins]
 EOF
 
+
+
+# install fzf plugin
+git clone https://github.com/junegunn/fzf.git ~/.fzf
+cd ~/.fzf
+./install -all
+
+cd $CUR_WORK_PATH
