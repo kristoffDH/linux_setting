@@ -26,7 +26,7 @@ echo "--------------------------------------------"
 sudo apt install -y build-essential software-properties-common libssl-dev make curl tree python-openssl unzip
 sudo apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 sudo apt install -y terminator fzf fd-find fasd
-sudo apt install -o Dpkg::Options::="--force-overwrite" bat ripgrep
+sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
 sudo dpkg -i $CUR_WORK_PATH/lsd_0.20.1_amd64.deb
 
