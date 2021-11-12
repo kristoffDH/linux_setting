@@ -67,6 +67,9 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ~/.o
 # zsh alias-tip plugin
 git clone https://github.com/djui/alias-tips.git ~/.oh-my-zsh/custom/plugins/alias-tips
 
+# zsh autopair plugin
+git clone https://github.com/hlissner/zsh-autopair ~/.oh-my-zsh/custom/plugins/zsh-autopair
+
 # install fzf plugin
 git clone https://github.com/junegunn/fzf.git ~/.fzf
 cd ~/.fzf
@@ -74,7 +77,7 @@ cd ~/.fzf
 
 # setting .zshrc
 sed -i "s/robbyrussell/headline\/headline/" ~/.zshrc
-sed -i "s/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\n#zsh-syntax-highlighting\nfast-syntax-highlighting\ndocker\ndocker-compose\nalias-tips\ncommand-not-found\ngitfast\npip\nsudo\nurltools\nripgrep\nfzf\nfasd\n)/" ~/.zshrc
+sed -i "s/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\n#zsh-syntax-highlighting\nfast-syntax-highlighting\ndocker\ndocker-compose\nalias-tips\ncommand-not-found\ngitfast\npip\nsudo\nurltools\nripgrep\nfzf\nfasd\nzsh-autopair\n)/" ~/.zshrc
 
 cat << EOF >> ~/.zshrc
 alias ls="lsd"
@@ -129,3 +132,5 @@ cat << EOF > $TERMINATOR_CFG_PATH/config
 [plugins]
 EOF
 
+# Autopair init
+autopair-init
