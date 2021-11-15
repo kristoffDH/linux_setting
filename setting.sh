@@ -25,7 +25,7 @@ echo "Install apt package"
 echo "--------------------------------------------"
 sudo apt install -y build-essential software-properties-common libssl-dev make curl tree python-openssl unzip
 sudo apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-sudo apt install -y terminator fzf fd-find fasd
+sudo apt install -y terminator fzf fd-find fasd openssh-server net-tools
 sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
 sudo dpkg -i $CUR_WORK_PATH/lsd_0.20.1_amd64.deb
@@ -95,11 +95,15 @@ alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 
+eval "$(fasd --init auto)"
+
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: "
+
+# fzf 검색 옵션 fd로 변경
+export FZF_DEFAULT_COMMAND=’fd — type f’
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(fasd --init auto)"
 EOF
 
 # Modify login shell
@@ -133,4 +137,7 @@ cat << EOF > $TERMINATOR_CFG_PATH/config
 EOF
 
 # Autopair init
-autopair-init
+#autopair-init
+
+# fd ignore setting
+touch $CUR_WORK_PATH/.fdignore
