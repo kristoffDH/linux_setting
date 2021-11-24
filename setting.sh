@@ -75,6 +75,9 @@ git clone https://github.com/junegunn/fzf.git ~/.fzf
 cd ~/.fzf
 ./install --all
 
+# copy theme file
+cp $CUR_WORK_PATH/zsh_theme/* ~/.oh-my-zsh/custom/themes/
+
 # setting .zshrc
 sed -i "s/robbyrussell/headline\/headline/" ~/.zshrc
 sed -i "s/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\n#zsh-syntax-highlighting\nfast-syntax-highlighting\ndocker\ndocker-compose\nalias-tips\ncommand-not-found\ngitfast\npip\nsudo\nurltools\nripgrep\nfzf\nfasd\nzsh-autopair\n)/" ~/.zshrc
