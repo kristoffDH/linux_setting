@@ -29,13 +29,15 @@ echo "--------------------------------------------"
 
 sudo apt install -y build-essential software-properties-common libssl-dev make curl tree python-openssl unzip
 sudo apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-sudo apt install -y terminator fzf fd-find fasd openssh-server net-tools
+sudo apt install -y terminator fzf fd-find fasd openssh-server net-tools python3.9 python-software-properties python3.9-distutils
 sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
+sudo apt install -y libcairo2-dev python3.9-dev libgirepository1.0-dev
 
 sudo dpkg -i $CUR_WORK_PATH/lsd_0.20.1_amd64.deb
 
+sudo add-apt-repository ppa:neovim-ppa/stable
+
 # install neovim (nvim)
-pip3 install --user neovim
 sudo apt-get install -y neovim
 
 # python3 link to python
@@ -124,18 +126,18 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true # <- Set this to false for simgle line prompt
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='${P9K_CONTENT} $(whoami | grep -v "^root\$")'
-POWERLEVEL9K_OS_ICON_BACKGROUND=red
-POWERLEVEL9K_OS_ICON_FOREGROUND=white
+POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='${P9K_CONTENT}'
+POWERLEVEL9K_OS_ICON_BACKGROUND=yellow
+POWERLEVEL9K_OS_ICON_FOREGROUND=black
 POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND=black
 POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND=red
-POWERLEVEL9K_SSH_BACKGROUND=white
-POWERLEVEL9K_SSH_FOREGROUND=blue
+POWERLEVEL9K_SSH_BACKGROUND=black
+POWERLEVEL9K_SSH_FOREGROUND=yellow
 POWERLEVEL9K_FOLDER_ICON=
 POWERLEVEL9K_DIR_BACKGROUND=blue
 POWERLEVEL9K_DIR_FOREGROUND=black
-POWERLEVEL9K_DIR_WRITABLE_BACKGROUND=black
-POWERLEVEL9K_DIR_WRITABLE_FOREGROUND=red
+POWERLEVEL9K_DIR_WRITABLE_BACKGROUND=red
+POWERLEVEL9K_DIR_WRITABLE_FOREGROUND=white
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND=black
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND=green
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=black
@@ -173,10 +175,11 @@ POWERLEVEL9K_VI_MODE_OVERWRITE_BACKGROUND=red
 POWERLEVEL9K_VI_INSERT_MODE_STRING=
 POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0B2'
 POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL='\uE0B0'
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{blue}╭─'
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{blue}╰%f '
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{yellow}╭─'
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{yellow}╰%f '
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator ssh dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status command_execution_time background_jobs time ram)
+
 
 ZLE_RPROMPT_INDENT=0
 
