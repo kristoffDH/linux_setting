@@ -20,3 +20,9 @@ Ctrl + R : View & Select History
 Alt + C : current directory & change directory
 
 
+## /etc/sudoers 수정
+defaults secure_path 주석처리하고 아래 내용으로 변경
+```
+#Defaults       secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults env_keep=PATH
+```
