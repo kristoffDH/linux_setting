@@ -31,7 +31,7 @@ sudo apt install -y build-essential software-properties-common libssl-dev make c
 sudo apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 sudo apt install -y terminator fzf fd-find fasd openssh-server net-tools python3.9 python-software-properties python3.9-distutils
 sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
-sudo apt install -y libcairo2-dev python3.9-dev libgirepository1.0-dev python3-pip
+sudo apt install -y libcairo2-dev python3.9-dev libgirepository1.0-dev python3-pip cmake
 
 sudo dpkg -i $CUR_WORK_PATH/lsd_0.20.1_amd64.deb
 
