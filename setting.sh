@@ -83,20 +83,22 @@ cd ~/.fzf
 
 # copy theme file
 cp $CUR_WORK_PATH/zsh_theme/* ~/.oh-my-zsh/custom/themes/
-
-git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes
+git clone https://github.com/romkatv/powerlevel10k.git ./powerlevel10k
+mv ./powerlevel10k ~/.oh-my-zsh/themes/
 
 # setting .zshrc
-sed -i "s/robbyrussell/headline\/headline/" ~/.zshrc
+sed -i "s/ZSH_THEME/#ZSH_THEME/g" ~/.zshrc
 sed -i "s/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\n#zsh-syntax-highlighting\nfast-syntax-highlighting\ndocker\ndocker-compose\nalias-tips\ncommand-not-found\ngitfast\npip\nsudo\nurltools\nripgrep\nfzf\nfasd\nzsh-autopair\n)/" ~/.zshrc
 
+# add alias & zsh theme
 cat << EOF >> ~/.zshrc
 alias ls="lsd"
 alias ll="lsd -al"
 alias lt="lsd --tree"
 alias vi='nvim'
 alias fd='fdfind'
-alias cat='batcat'
+alias cat='batcat --style=plain'
+alias bat='batcat'
 alias a='fasd -a'        # any
 alias s='fasd -si'       # show / search / select
 alias d='fasd -d'        # directory
@@ -105,6 +107,8 @@ alias sd='fasd -sid'     # interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
 alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
+alias src='source ~/.zshrc'
+alias cfg='vi ~/.zshrc'
 
 eval "$(fasd --init auto)"
 
@@ -115,8 +119,8 @@ export FZF_DEFAULT_COMMAND=’fd — type f’
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-function bat_tail {
-    tail -f "$@" | cat --paging=never -l log
+function btail() {
+	tail -f $1 | cat --paging=never -l log
 }
 
 s=' ' # fix too wide icons
@@ -222,3 +226,5 @@ EOF
 
 # fd ignore setting
 touch $CUR_WORK_PATH/.fdignore
+
+sudo apt-get autoremove -y
