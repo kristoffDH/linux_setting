@@ -5,14 +5,14 @@
 
 
 ## fasd alias
-alia a='fasd -a'        # any
-alias s='fasd -si'       # show / search / select
-alias d='fasd -d'        # directory
-alias f='fasd -f'        # file
-alias sd='fasd -sid'     # interactive directory selection
-alias sf='fasd -sif'     # interactive file selection
-alias z='fasd_cd -d'     # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # cd with interactive selection
+alia a='fasd -a'        # any <br/>
+alias s='fasd -si'       # show / search / select <br/>
+alias d='fasd -d'        # directory <br/>
+alias f='fasd -f'        # file <br/>
+alias sd='fasd -sid'     # interactive directory selection <br/>
+alias sf='fasd -sif'     # interactive file selection <br/>
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump <br/>
+alias zz='fasd_cd -d -i' # cd with interactive selection <br/>
 
 
 ## fzf hot-key
