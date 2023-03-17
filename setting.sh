@@ -96,6 +96,10 @@ cp $CUR_WORK_PATH/.p10k.zsh ~/
 
 # add alias & zsh theme
 cat << EOF >> ~/.zshrc
+unalias l
+unalias ls
+unalias lsa
+
 alias ls='exa --icons'
 alias ll='exa --icons -lbhgUumaF --group-directories-first --time-style=long-iso --git --color-scale'
 alias tree='exa --icons -T -a --group-directories-first'
