@@ -128,6 +128,13 @@ function btail() {
 	tail -f $1 | cat --paging=never -l log
 }
 
+function show-colors() {
+    for i in {0..255};
+    do
+        print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'};
+    done
+}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
