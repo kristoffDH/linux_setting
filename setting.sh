@@ -96,10 +96,6 @@ cp $CUR_WORK_PATH/.p10k.zsh ~/
 
 # add alias & zsh theme
 cat << EOF >> ~/.zshrc
-unalias l
-unalias ls
-unalias lsa
-
 alias ls='exa --icons'
 alias ll='exa --icons -lbhgUumaF --group-directories-first --time-style=long-iso --git --color-scale'
 alias tree='exa --icons -T -a --group-directories-first'
@@ -137,6 +133,10 @@ source ~/.oh-my-zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+unalias l
+unalias ls
+unalias lsa
 EOF
 
 # Modify login shell
