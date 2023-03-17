@@ -88,7 +88,7 @@ git clone https://github.com/romkatv/powerlevel10k.git ./powerlevel10k
 mv ./powerlevel10k ~/.oh-my-zsh/themes/
 
 # setting .zshrc
-sed -i "s/ZSH_THEME/#ZSH_THEME/g" ~/.zshrc
+sed -i "s/robbyrussell/powerlevel10k\/powerlevel10k/" ~/.zshrc
 sed -i "s/plugins=(git)/plugins=(\ngit\nzsh-autosuggestions\n#zsh-syntax-highlighting\nfast-syntax-highlighting\ndocker\ndocker-compose\nalias-tips\ncommand-not-found\ngitfast\npip\nsudo\nurltools\nripgrep\nfzf\nfasd\nzsh-autopair\n)/" ~/.zshrc
 
 # copy p10k.config
@@ -127,9 +127,6 @@ export FZF_DEFAULT_COMMAND=’fd — type f’
 function btail() {
 	tail -f $1 | cat --paging=never -l log
 }
-
-# ---- load POWERLEVEL10K ---
-source ~/.oh-my-zsh/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
