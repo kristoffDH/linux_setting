@@ -61,8 +61,6 @@ sudo apt-get install -y zsh
 cd ~
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
-# zsh headline theme
-git clone https://github.com/moarram/headline.git ~/.oh-my-zsh/custom/themes/headline
 
 # zsh install auto-suggestions plugin
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
@@ -83,7 +81,6 @@ cd ~/.fzf
 ./install --all
 
 # copy theme file
-cp $CUR_WORK_PATH/zsh_theme/* ~/.oh-my-zsh/custom/themes/
 git clone https://github.com/romkatv/powerlevel10k.git ./powerlevel10k
 mv ./powerlevel10k ~/.oh-my-zsh/themes/
 
