@@ -34,7 +34,7 @@ sudo apt install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 sudo apt install -y libcairo2-dev python3.9-dev libgirepository1.0-dev python3-pip cmake cargo
 
 # install exa
-cargo install exa
+cargo install lsd
 
 sudo add-apt-repository ppa:neovim-ppa/stable
 
